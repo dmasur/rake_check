@@ -1,5 +1,6 @@
 require 'colored'
 require 'yaml'
+require 'reek'
 ##
 # ReekChecker checks the Output of reek for Code Smells
 #
@@ -18,6 +19,7 @@ class ReekChecker
   end
 
   private
+    ##
     # Gives the Check Status
     #
     # @return [String] Checkstatus
@@ -28,9 +30,30 @@ class ReekChecker
       elsif not @shell_output.include? '---'
         'N/A'.red
       else
-        error_count = YAML.parse(@shell_output).children.first.children.count
+        error_count = parsed_output.count
         "#{error_count} Codesmell".yellow
       end
+    end
+
+    ##
+    # Parse the Output through YAML
+    #
+    # @return [Array] SmellWarnings
+    # @author dmasur
+    def parsed_output
+      YAML::load(@shell_output)
+    end
+
+    ##
+    # Format the SmellWarning for printing
+    #
+    # @return [String] Formated SmellWarning
+    # @author dmasur
+    def self.format_smell smell_warning
+      location = smell_warning.location
+      output = "#{smell_warning.smell["subclass"]}: "
+      output += "#{location["context"]}@#{location["lines"].join(", ")}"
+      return output
     end
 
     ##
@@ -39,10 +62,12 @@ class ReekChecker
     # @return [String] Output
     # @author dmasur
     def output
-      unless @shell_output.include? '---'
-        @shell_output
+      if @shell_output.include? '---'
+        parsed_output.map do |smell|
+          ReekChecker.format_smell smell
+        end.join("\n")
       else
-        ''
+        @shell_output
       end
     end
 end

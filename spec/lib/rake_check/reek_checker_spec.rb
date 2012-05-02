@@ -13,6 +13,9 @@ describe ReekChecker do
     shell_output = File.read(File.expand_path(File.dirname(__FILE__) +
                                               '/../../files/reek_output.yaml'))
     subject.stub('`' => shell_output)
-    subject.result.should == { type: :reek, check_output: '', status: "\e[33m2 Codesmell\e[0m" }
+    check_output = "DuplicateMethodCall: ReekChecker#status@19, 20, 21, 22, 23\n"
+    check_output += "TooManyStatements: ReekChecker#status@17"
+    subject.result.should == { type: :reek,
+                               check_output: check_output, status: "\e[33m2 Codesmell\e[0m" }
   end
 end
