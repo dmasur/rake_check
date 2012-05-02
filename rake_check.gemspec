@@ -4,9 +4,9 @@ require File.expand_path('../lib/rake_check/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Dominik Masur"]
   gem.email         = ["dominik.masur@googlemail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Checking the Project for Code Smells and bad documentation}
+  gem.summary       = %q{Checking the Project for Code Smells and bad documentation}
+  gem.homepage      = "https://github.com/TBAA/rake_check"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
