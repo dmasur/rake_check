@@ -1,4 +1,5 @@
 require 'colored'
+require 'yaml'
 ##
 # ReekChecker checks the Output of reek for Code Smells
 #
