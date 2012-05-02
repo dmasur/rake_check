@@ -1,6 +1,6 @@
 # RakeCheck
 
-TODO: Write a gem description
+Checking the Project for Code Smells and bad documentation
 
 ## Installation
 
@@ -18,7 +18,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Put this in your Rakefile:
+
+require 'rake_check'
+load 'rake_check/tasks/check.rake'
 
 ## Contributing
 
