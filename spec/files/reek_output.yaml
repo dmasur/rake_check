@@ -1,0 +1,36 @@
+/Users/foo/.rvm/gems/ruby-1.9.3-p194/gems/ruby_parser-2.3.1/lib/ruby_parser_extras.rb:10: warning: already initialized constant ENC_NONE
+/Users/foo/.rvm/gems/ruby-1.9.3-p194/gems/ruby_parser-2.3.1/lib/ruby_parser_extras.rb:11: warning: already initialized constant ENC_EUC
+/Users/foo/.rvm/gems/ruby-1.9.3-p194/gems/ruby_parser-2.3.1/lib/ruby_parser_extras.rb:12: warning: already initialized constant ENC_SJIS
+/Users/foo/.rvm/gems/ruby-1.9.3-p194/gems/ruby_parser-2.3.1/lib/ruby_parser_extras.rb:13: warning: already initialized constant ENC_UTF8
+---
+- !ruby/object:Reek::SmellWarning
+  smell:
+    class: Duplication
+    subclass: DuplicateMethodCall
+    message: calls "OK".green 5 times
+    call: ! '"OK".green'
+    occurrences: 5
+  status:
+    is_active: true
+  location:
+    context: ReekChecker#status
+    lines:
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    source: lib/rake_check/reek_checker.rb
+- !ruby/object:Reek::SmellWarning
+  smell:
+    class: LongMethod
+    subclass: TooManyStatements
+    message: has approx 8 statements
+    statement_count: 8
+  status:
+    is_active: true
+  location:
+    context: ReekChecker#status
+    lines:
+    - 17
+    source: lib/rake_check/reek_checker.rb
