@@ -10,7 +10,7 @@ class RspecChecker
   # @return [Hash] Checkresult
   # @author dmasur
   def result
-    @shell_output = `export COVERAGE=true; rspec spec; export COVERAGE=`
+    @shell_output = `export COVERAGE=true; rspec spec spec_no_rails; export COVERAGE=`
     {:type => :rspec, :status => status + code_coverage, :check_output => output}
   end
 

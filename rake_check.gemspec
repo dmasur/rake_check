@@ -19,8 +19,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "colored"
   gem.add_dependency "rake"
   gem.add_dependency "reek"
-  gem.add_dependency "yard"
-  gem.add_dependency "rails_best_practices"
   gem.add_dependency "cane"
-  gem.add_dependency 'redcarpet'
 end
