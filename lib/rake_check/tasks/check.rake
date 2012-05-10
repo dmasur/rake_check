@@ -41,15 +41,18 @@ def print_summary results
   results.each do |result|
     type_name = result[:type].to_s
     status = result[:status]
-    puts "puts #{type_name}:\t#{status}"
+    puts "#{type_name}:\t#{status}"
   end
 end
 desc "Check Rails Best Practices and RSpec"
 task :check do
-  rspec = RspecChecker.new.result
-  rbp = RbpChecker.new.result
-  yard = YardChecker.new.result
-  reek = ReekChecker.new.result
-  cane = CaneChecker.new.result
-  print_check_result [rspec, rbp, yard, reek, cane]
+  results  ||= []
+  Dir["spec*"].each do |spec_dir|
+    results << RspecChecker.new.result(spec_dir)
+  end
+  results << RbpChecker.new.result
+  results << YardChecker.new.result
+  results << ReekChecker.new.result
+  results << CaneChecker.new.result
+  print_check_result results
 end

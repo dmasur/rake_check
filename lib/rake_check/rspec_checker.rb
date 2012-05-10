@@ -9,9 +9,9 @@ class RspecChecker
   #
   # @return [Hash] Checkresult
   # @author dmasur
-  def result
-    @shell_output = `export COVERAGE=true; rspec spec spec_no_rails; export COVERAGE=`
-    {:type => :rspec, :status => status + code_coverage, :check_output => output}
+  def result directory="spec"
+    @shell_output = `export COVERAGE=true; rspec #{directory}; export COVERAGE=`
+    {:type => directory, :status => status + code_coverage, :check_output => output}
   end
 
   private

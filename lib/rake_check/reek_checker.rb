@@ -9,9 +9,7 @@ class ReekChecker
   # @return [Hash] Checkresult
   # @author dmasur
   def result
-    require 'reek'
-    require 'colored'
-    require 'yaml'
+    require_dependencies
     shell_output = `reek app lib -y 2>/dev/null`
     @shell_output = shell_output.split("\n").
       delete_if{|line| line.include?('already initialized constant') }.join("\n")
@@ -19,6 +17,15 @@ class ReekChecker
   end
 
   private
+    ##
+    # Require Dependencies
+    #
+    # @author dmasur
+    def require_dependencies
+      require 'reek'
+      require 'colored'
+      require 'yaml'
+    end
     ##
     # Gives the Check Status
     #
@@ -41,7 +48,6 @@ class ReekChecker
     # @return [Array] SmellWarnings
     # @author dmasur
     def parsed_output
-      puts @shell_output
       YAML::load(@shell_output)
     end
 
