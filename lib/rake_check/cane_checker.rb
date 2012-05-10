@@ -10,7 +10,11 @@ class CaneChecker
   # @return [Hash] Checkresult
   # @author dmasur
   def result
-    @shell_output = `cane`
+    @shell_output = begin
+      `cane`
+    rescue Errno::ENOENT
+      "Cane not found"
+    end
     { :type => :cane, :check_output => @shell_output, :status => status }
   end
 
@@ -39,10 +43,8 @@ class CaneChecker
     # @return [String] Colored Validation Count
     # @author dmasur
     def color_violations
-      color = case @violations
-      when 1..9 then :yellow
-      else :red
-      end
+      color = :red
+      color = :yellow if @violations.between?(1, 9)
       @violations = @violations.to_s.send color
     end
 end

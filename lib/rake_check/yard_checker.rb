@@ -10,7 +10,11 @@ class YardChecker
   # @return [Hash] Checkresult
   # @author dmasur
   def result
-    @shell_output = `yardoc`
+    @shell_output = begin
+      `yardoc`
+    rescue Errno::ENOENT
+      "Yardoc not found"
+    end
     {:type => :yard, :check_output => output, :status => status}
   end
 
@@ -58,10 +62,6 @@ class YardChecker
     # @return [String] Output
     # @author dmasur
     def output
-      if @shell_output.include? 'documented'
-        ''
-      else
-        @shell_output
-      end
+      @shell_output.include?('documented') ? '' : @shell_output
     end
 end

@@ -10,8 +10,13 @@ class ReekChecker
   # @author dmasur
   def result
     require_dependencies
-    shell_output = `reek app lib -y 2>/dev/null`
-    @shell_output = shell_output.split("\n").
+
+    @shell_output = begin
+      `reek app lib -y 2>/dev/null`
+    rescue Errno::ENOENT
+      "Reek not found"
+    end
+    @shell_output = @shell_output.split("\n").
       delete_if{|line| line.include?('already initialized constant') }.join("\n")
     {:type => :reek, :check_output => output, :status => status}
   end

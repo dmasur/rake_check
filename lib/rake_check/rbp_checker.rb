@@ -10,7 +10,11 @@ class RbpChecker
   # @return [Hash] Checkresult
   # @author dmasur
   def result
-    @shell_output = `rails_best_practices --silent --spec`
+    @shell_output = begin
+      `rails_best_practices --silent --spec`
+    rescue Errno::ENOENT
+      "Rails best practices not found"
+    end
     {:type => :rbp, :check_output => output, :status => status}
   end
 
@@ -21,8 +25,8 @@ class RbpChecker
     # @return [String] Checkoutput
     # @author dmasur
     def output
-      case state
-      when :good then ''
+      if state == :good
+        ''
       else
         regexp = /Please go to .* to see more useful Rails Best Practices./
         output_lines = @shell_output.gsub(regexp, '').split(/\n/)
@@ -36,8 +40,7 @@ class RbpChecker
     # @return [String] Checkstatus
     # @author dmasur
     def status
-      tmp_state = state
-      case tmp_state
+      case state
       when :good then 'OK'.green
       when :error then 'N/A'
       else error_message.red
@@ -50,8 +53,7 @@ class RbpChecker
     # @return [String] Errormessage
     # @author dmasur
     def error_message
-      warning_count = /Found (\d+) warnings/.match(@shell_output)[1]
-      "Found #{warning_count} warnings"
+      /Found \d+ warnings/.match(@shell_output)[0]
     end
 
     ##

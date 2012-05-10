@@ -10,7 +10,11 @@ class RspecChecker
   # @return [Hash] Checkresult
   # @author dmasur
   def result directory="spec"
-    @shell_output = `export COVERAGE=true; rspec #{directory}; export COVERAGE=`
+    @shell_output = begin
+      `export COVERAGE=true; rspec #{directory}; export COVERAGE=`
+    rescue Errno::ENOENT
+      "RSpec not found"
+    end
     {:type => directory, :status => status + code_coverage, :check_output => output}
   end
 
@@ -36,10 +40,7 @@ class RspecChecker
     # @return [String] Output
     # @author dmasur
     def output
-      case @shell_output
-      when / 0 failures/ then ''
-      else @shell_output
-      end
+      @shell_output =~ / 0 failures/ ? '' : @shell_output
     end
 
     ##
@@ -48,11 +49,11 @@ class RspecChecker
     # @return [String] Codecoverage
     def code_coverage
       if @shell_output.include?('Coverage report generated')
-        @coverage = /LOC \((\d+\.\d+)%\) covered/.match(@shell_output)[1].to_f
+        @coverage = /LOC \(([\d.]+)%\) covered/.match(@shell_output)[1].to_f
         color_coverage
         " with #{@coverage} Code Coverage"
       else
-        ""
+        ''
       end
     end
 

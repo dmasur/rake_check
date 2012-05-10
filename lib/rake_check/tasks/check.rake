@@ -39,12 +39,11 @@ end
 # @author dmasur
 def print_summary results
   results.each do |result|
-    type_name = result[:type].to_s
-    status = result[:status]
-    puts "#{type_name}:\t#{status}"
+    puts "#{result[:type]}:\t#{result[:status]}"
   end
 end
-desc "Check Rails Best Practices and RSpec"
+
+desc "Check all Metric tools"
 task :check do
   results  ||= []
   Dir["spec*"].each do |spec_dir|
