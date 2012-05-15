@@ -11,7 +11,7 @@ class CucumberChecker
   # @author dmasur
   def result
     @shell_output = begin
-      `cucumber`
+      `export COVERAGE=true; cucumber; export COVERAGE=;`
     rescue Errno::ENOENT
       "Cucumber not found"
     end

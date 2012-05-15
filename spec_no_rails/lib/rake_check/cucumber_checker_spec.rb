@@ -11,10 +11,10 @@ describe CucumberChecker do
                                check_output: '',
                                status: "\e[32mOK\e[0m" }
   end
-    it "is red on Error" do
-      subject.stub('`' => "8 scenarios (1 failed, 7 passed)")
-      subject.result.should == { type: :cucumber,
-                                 check_output: '',
-                                 status: "\e[31m1 failed scenarios\e[0m" }
-    end
+  it "is red on Error" do
+    subject.stub('`' => "8 scenarios (1 failed, 7 passed)")
+    subject.result.should == { type: :cucumber,
+                               check_output: '',
+                               status: "\e[31m1 failed scenarios\e[0m" }
+  end
 end
