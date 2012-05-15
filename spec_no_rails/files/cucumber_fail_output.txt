@@ -1,0 +1,393 @@
+[{
+    "keyword": "Feature",
+    "name": "Admin Pages",
+    "line": 1,
+    "description": "In order to display static content pages\nAs an Admin\nI want to create this pages",
+    "id": "admin-pages",
+    "uri": "features/admin_pages.feature",
+    "elements": [{
+        "keyword": "Scenario",
+        "name": "Create static Page with Sidebar",
+        "line": 7,
+        "description": "",
+        "tags": [{
+            "name": "@pending",
+            "line": 6
+        }],
+        "id": "admin-pages;create-static-page-with-sidebar",
+        "type": "scenario",
+        "steps": [{
+            "keyword": "Given ",
+            "name": "I am logged in as an Admin",
+            "line": 8,
+            "match": {
+                "location": "features/step_definitions/admin_pages_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "When ",
+            "name": "I create a Page with a Sidebar",
+            "line": 9,
+            "match": {
+                "location": "features/step_definitions/admin_pages_steps.rb:10"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "And ",
+            "name": "I add and fill a PagePart \"Main Part\"",
+            "line": 10,
+            "match": {
+                "arguments": [{
+                    "offset": 27,
+                    "val": "Main Part"
+                }],
+                "location": "features/step_definitions/admin_pages_steps.rb:17"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "And ",
+            "name": "I add and fill a PagePart \"Side Part\"",
+            "line": 11,
+            "match": {
+                "arguments": [{
+                    "offset": 27,
+                    "val": "Side Part"
+                }],
+                "location": "features/step_definitions/admin_pages_steps.rb:17"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "And ",
+            "name": "submit the Page",
+            "line": 12,
+            "match": {
+                "location": "features/step_definitions/admin_pages_steps.rb:23"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "Then ",
+            "name": "I can view this Page",
+            "line": 13,
+            "match": {
+                "location": "features/step_definitions/admin_pages_steps.rb:28"
+            },
+            "result": {
+                "status": "failed",
+                "error_message": "undefined local variable or method `admin_page_change_link' for #<#<Class:0x007f8301cf6418>:0x007f830184eca8> (ActionView::Template::Error)\n./app/views/pages/show.html.haml:3:in `_app_views_pages_show_html_haml___849297658987086408_70100321483560'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/template.rb:143:in `block in render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/notifications.rb:125:in `instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/template.rb:141:in `render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/notifications.rb:123:in `block in instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/notifications/instrumenter.rb:20:in `instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/notifications.rb:123:in `instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/template_renderer.rb:45:in `render_template'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/template_renderer.rb:18:in `render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/renderer.rb:36:in `render_template'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/haml-3.1.5/lib/haml/helpers/rails_323_textarea_fix.rb:26:in `render_template_with_haml'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_view/renderer/renderer.rb:17:in `render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/abstract_controller/rendering.rb:110:in `_render_template'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/streaming.rb:225:in `_render_template'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/abstract_controller/rendering.rb:103:in `render_to_body'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/haml-3.1.5/lib/haml/helpers/rails_323_textarea_fix.rb:14:in `render_to_body_with_haml'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/renderers.rb:28:in `render_to_body'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/abstract_controller/rendering.rb:88:in `render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/rendering.rb:16:in `render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'\n/Users/dmasur/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/instrumentation.rb:40:in `block in render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activerecord-3.2.3/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/instrumentation.rb:39:in `render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/abstract_controller/base.rb:167:in `process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/rendering.rb:10:in `process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/abstract_controller/callbacks.rb:18:in `block in process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/callbacks.rb:414:in `_run__4040886189848434385__process_action__4107021055913346864__callbacks'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/callbacks.rb:405:in `__run_callback'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/callbacks.rb:81:in `run_callbacks'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/abstract_controller/callbacks.rb:17:in `process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/rescue.rb:29:in `process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/notifications.rb:123:in `block in instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/notifications/instrumenter.rb:20:in `instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/notifications.rb:123:in `instrument'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/params_wrapper.rb:205:in `process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activerecord-3.2.3/lib/active_record/railties/controller_runtime.rb:18:in `process_action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/abstract_controller/base.rb:121:in `process'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/abstract_controller/rendering.rb:45:in `process'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal.rb:203:in `dispatch'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_controller/metal.rb:246:in `block in action'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/routing/route_set.rb:73:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/routing/route_set.rb:36:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/routing/mapper.rb:40:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/journey-1.0.3/lib/journey/router.rb:68:in `block in call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/journey-1.0.3/lib/journey/router.rb:56:in `each'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/journey-1.0.3/lib/journey/router.rb:56:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/routing/route_set.rb:600:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/omniauth-1.1.0/lib/omniauth/strategy.rb:392:in `call_app!'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/omniauth-1.1.0/lib/omniauth/strategy.rb:258:in `mock_call!'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/omniauth-1.1.0/lib/omniauth/strategy.rb:171:in `call!'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/omniauth-1.1.0/lib/omniauth/strategy.rb:157:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/sass-3.1.17/lib/sass/plugin/rack.rb:54:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/warden-1.1.1/lib/warden/manager.rb:35:in `block in call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/warden-1.1.1/lib/warden/manager.rb:34:in `catch'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/warden-1.1.1/lib/warden/manager.rb:34:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/head.rb:14:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/flash.rb:242:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/cookies.rb:338:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activerecord-3.2.3/lib/active_record/query_cache.rb:64:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activerecord-3.2.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:467:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/callbacks.rb:405:in `_run__286193175654510887__call__3463419919178899849__callbacks'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/callbacks.rb:405:in `__run_callback'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/callbacks.rb:81:in `run_callbacks'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/callbacks.rb:27:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/cucumber-rails-1.3.0/lib/cucumber/rails/action_controller.rb:10:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/railties-3.2.3/lib/rails/rack/logger.rb:26:in `call_app'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/railties-3.2.3/lib/rails/rack/logger.rb:16:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/request_id.rb:22:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/activesupport-3.2.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/actionpack-3.2.3/lib/action_dispatch/middleware/static.rb:62:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/railties-3.2.3/lib/rails/engine.rb:479:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/railties-3.2.3/lib/rails/application.rb:220:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/builder.rb:134:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/urlmap.rb:64:in `block in call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/urlmap.rb:49:in `each'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-1.4.1/lib/rack/urlmap.rb:49:in `call'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-test-0.6.1/lib/rack/mock_session.rb:30:in `request'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-test-0.6.1/lib/rack/test.rb:219:in `process_request'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/rack-test-0.6.1/lib/rack/test.rb:57:in `get'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/capybara-1.1.2/lib/capybara/rack_test/browser.rb:62:in `process'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/capybara-1.1.2/lib/capybara/rack_test/browser.rb:21:in `visit'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/capybara-1.1.2/lib/capybara/rack_test/driver.rb:32:in `visit'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/capybara-1.1.2/lib/capybara/session.rb:157:in `visit'\n/Users/dmasur/.rvm/gems/ruby-1.9.3-p194@jobmensa2/gems/capybara-1.1.2/lib/capybara/dsl.rb:161:in `visit'\n./features/step_definitions/admin_pages_steps.rb:29:in `/^I can view this Page$/'\nfeatures/admin_pages.feature:13:in `Then I can view this Page'"
+            }
+        }]
+    }]
+},
+{
+    "keyword": "Feature",
+    "name": "Admin Widgets",
+    "line": 1,
+    "description": "",
+    "id": "admin-widgets",
+    "uri": "features/admin_widgets.feature",
+    "elements": [{
+        "keyword": "Scenario",
+        "name": "Admin can see his Charts",
+        "line": 3,
+        "description": "",
+        "id": "admin-widgets;admin-can-see-his-charts",
+        "type": "scenario",
+        "steps": [{
+            "keyword": "Given ",
+            "name": "I am logged in as Admin",
+            "line": 4,
+            "match": {
+                "location": "features/step_definitions/admin_pages_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "And ",
+            "name": "I have a Chart widget",
+            "line": 5,
+            "match": {
+                "location": "features/step_definitions/admin_widget_steps.rb:21"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "Then ",
+            "name": "I can see the Chart Widget",
+            "line": 6,
+            "match": {
+                "location": "features/step_definitions/admin_widget_steps.rb:16"
+            },
+            "result": {
+                "status": "passed"
+            }
+        }]
+    },
+    {
+        "keyword": "Scenario",
+        "name": "Create a Table Widget",
+        "line": 8,
+        "description": "",
+        "id": "admin-widgets;create-a-table-widget",
+        "type": "scenario",
+        "steps": [{
+            "keyword": "Given ",
+            "name": "I am logged in as Admin",
+            "line": 9,
+            "match": {
+                "location": "features/step_definitions/admin_pages_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "When ",
+            "name": "I create a Table widget",
+            "line": 10,
+            "match": {
+                "arguments": [{
+                    "offset": 11,
+                    "val": "Table widget"
+                }],
+                "location": "features/step_definitions/admin_widget_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "Then ",
+            "name": "I can see the Table Widget",
+            "line": 11,
+            "match": {
+                "location": "features/step_definitions/admin_widget_steps.rb:9"
+            },
+            "result": {
+                "status": "passed"
+            }
+        }]
+    },
+    {
+        "keyword": "Scenario",
+        "name": "Create a Chart Widget",
+        "line": 13,
+        "description": "",
+        "id": "admin-widgets;create-a-chart-widget",
+        "type": "scenario",
+        "steps": [{
+            "keyword": "Given ",
+            "name": "I am logged in as Admin",
+            "line": 14,
+            "match": {
+                "location": "features/step_definitions/admin_pages_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "When ",
+            "name": "I create a Chart widget",
+            "line": 15,
+            "match": {
+                "arguments": [{
+                    "offset": 11,
+                    "val": "Chart widget"
+                }],
+                "location": "features/step_definitions/admin_widget_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "Then ",
+            "name": "I can see the Chart Widget",
+            "line": 16,
+            "match": {
+                "location": "features/step_definitions/admin_widget_steps.rb:16"
+            },
+            "result": {
+                "status": "passed"
+            }
+        }]
+    }]
+},
+{
+    "keyword": "Feature",
+    "name": "Facebook Integration",
+    "line": 1,
+    "description": "",
+    "id": "facebook-integration",
+    "uri": "features/facebook.feature",
+    "elements": [{
+        "keyword": "Scenario",
+        "name": "Register with Facebook",
+        "line": 3,
+        "description": "",
+        "id": "facebook-integration;register-with-facebook",
+        "type": "scenario",
+        "steps": [{
+            "keyword": "When ",
+            "name": "I sign up with Facebook",
+            "line": 4,
+            "match": {
+                "location": "features/step_definitions/facebook_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "Then ",
+            "name": "I should be logged in as facebook user",
+            "line": 5,
+            "match": {
+                "location": "features/step_definitions/facebook_steps.rb:6"
+            },
+            "result": {
+                "status": "passed"
+            }
+        }]
+    },
+    {
+        "keyword": "Scenario",
+        "name": "Log in with Facebook",
+        "line": 7,
+        "description": "",
+        "id": "facebook-integration;log-in-with-facebook",
+        "type": "scenario",
+        "steps": [{
+            "keyword": "Given ",
+            "name": "a Facebook User exists",
+            "line": 8,
+            "match": {
+                "location": "features/step_definitions/facebook_steps.rb:10"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "When ",
+            "name": "I log in with Facebook",
+            "line": 9,
+            "match": {
+                "location": "features/step_definitions/facebook_steps.rb:15"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "Then ",
+            "name": "I should be logged in as facebook user",
+            "line": 10,
+            "match": {
+                "location": "features/step_definitions/facebook_steps.rb:6"
+            },
+            "result": {
+                "status": "passed"
+            }
+        }]
+    }]
+},
+{
+    "keyword": "Feature",
+    "name": "Registration",
+    "line": 1,
+    "description": "",
+    "id": "registration",
+    "uri": "features/registration.feature",
+    "elements": [{
+        "keyword": "Scenario",
+        "name": "Student Registration",
+        "line": 3,
+        "description": "",
+        "id": "registration;student-registration",
+        "type": "scenario",
+        "steps": [{
+            "keyword": "When ",
+            "name": "I register as a Student",
+            "line": 4,
+            "match": {
+                "location": "features/step_definitions/registration_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "Then ",
+            "name": "I am logged in",
+            "line": 5,
+            "match": {
+                "location": "features/step_definitions/registration_steps.rb:12"
+            },
+            "result": {
+                "status": "passed"
+            }
+        }]
+    }]
+},
+{
+    "keyword": "Feature",
+    "name": "Welcome Site",
+    "line": 1,
+    "description": "",
+    "id": "welcome-site",
+    "uri": "features/welcome.feature",
+    "elements": [{
+        "keyword": "Scenario",
+        "name": "First Page",
+        "line": 3,
+        "description": "",
+        "id": "welcome-site;first-page",
+        "type": "scenario",
+        "steps": [{
+            "keyword": "When ",
+            "name": "I am at the homepage",
+            "line": 4,
+            "match": {
+                "location": "features/step_definitions/welcome_steps.rb:1"
+            },
+            "result": {
+                "status": "passed"
+            }
+        },
+        {
+            "keyword": "Then ",
+            "name": "I should the \"Welcome\"",
+            "line": 5,
+            "match": {
+                "arguments": [{
+                    "offset": 14,
+                    "val": "Welcome"
+                }],
+                "location": "features/step_definitions/welcome_steps.rb:5"
+            },
+            "result": {
+                "status": "passed"
+            }
+        }]
+    }]
+}]

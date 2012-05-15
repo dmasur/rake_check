@@ -4,6 +4,7 @@ require 'rake_check/rspec_checker'
 require 'rake_check/reek_checker'
 require 'rake_check/yard_checker'
 require 'rake_check/cane_checker'
+require 'rake_check/cucumber_checker'
 ##
 # Do exakt what it is called
 #
@@ -46,6 +47,7 @@ end
 desc "Check all Metric tools"
 task :check do
   results  ||= []
+  results << CucumberChecker.new.result
   Dir["spec*"].each do |spec_dir|
     results << RspecChecker.new.result(spec_dir)
   end
