@@ -40,9 +40,10 @@ end
 #
 # @author dmasur
 def print_summary results
-  results.each do |result|
-    puts "#{result[:type]}:\t#{result[:status]}"
+  result = results.map do |result|
+    "#{result[:type]} #{result[:status]}"
   end
+  puts `echo "#{result.join("\n")}" | column -t`
 end
 
 desc "Check all Metric tools"
