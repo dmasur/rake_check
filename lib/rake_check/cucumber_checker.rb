@@ -15,7 +15,7 @@ class CucumberChecker
     rescue Errno::ENOENT
       "Cucumber not found"
     end
-    {:type => :cucumber, :check_output => '', :status => status}
+    {:type => :cucumber, :check_output => output, :status => status}
   end
 
   private
@@ -36,6 +36,20 @@ class CucumberChecker
         end
       else
         'N/A'
+      end
+    end
+
+    ##
+    # Cucumber Output
+    #
+    # @author dmasur
+    def output
+      if status == "N/A"
+        ''
+      elsif status == "OK".green
+        ''
+      else
+        @shell_output
       end
     end
 end
