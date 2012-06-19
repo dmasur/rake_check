@@ -5,6 +5,7 @@ require 'rake_check/reek_checker'
 require 'rake_check/yard_checker'
 require 'rake_check/cane_checker'
 require 'rake_check/cucumber_checker'
+require 'rake_check/brakeman_checker'
 ##
 # Do exakt what it is called
 #
@@ -55,5 +56,6 @@ task :check do
   results << YardChecker.new.result
   results << ReekChecker.new.result
   results << CaneChecker.new.result
+  results << BrakemanChecker.new.result
   print_check_result results
 end

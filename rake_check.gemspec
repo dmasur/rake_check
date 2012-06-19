@@ -21,4 +21,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "reek"
   gem.add_dependency "cane"
   gem.add_dependency "cucumber"
+  gem.add_dependency "brakeman"
 end

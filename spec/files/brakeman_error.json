@@ -1,0 +1,53 @@
+{
+  "scan_info": {
+    "app_path": "/path/to/app",
+    "rails_version": "3.2.6",
+    "security_warnings": 1,
+    "timestamp": "2012-06-19 10:18:54 +0200",
+    "checks_performed": [
+      "BasicAuth",
+      "CrossSiteScripting",
+      "DefaultRoutes",
+      "EscapeFunction",
+      "Evaluation",
+      "Execute",
+      "FileAccess",
+      "FilterSkipping",
+      "ForgerySetting",
+      "LinkTo",
+      "LinkToHref",
+      "MailTo",
+      "MassAssignment",
+      "ModelAttributes",
+      "NestedAttributes",
+      "QuoteTableName",
+      "Redirect",
+      "Render",
+      "ResponseSplitting",
+      "SQL",
+      "SafeBufferManipulation",
+      "SelectVulnerability",
+      "Send",
+      "SendFile",
+      "SessionSettings",
+      "SkipBeforeFilter",
+      "StripTags",
+      "TranslateBug",
+      "ValidationRegex",
+      "WithoutProtection"
+    ],
+    "number_of_controllers": 16,
+    "number_of_models": 32,
+    "number_of_templates": 67,
+    "ruby_version": "1.9.3",
+    "brakeman_version": "1.6.2"
+  },
+  "warnings": [
+  ],
+  "errors": [
+    {
+      "error": "unterminated string meets end of file. near line 13: \"\" While processing /path/to/app/controllers/admin/admins_controller.rb",
+      "location": "/path/to/gem_dir/gems/brakeman-1.6.2/lib/ruby_parser/ruby_lexer.rb:398:in `rb_compile_error'"
+    }
+  ]
+}

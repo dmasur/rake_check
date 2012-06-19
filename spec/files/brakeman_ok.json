@@ -1,0 +1,100 @@
+[Notice] Detected Rails 3 application
+Loading scanner...
+[Notice] Using Ruby 1.9.3. Please make sure this matches the one used to run your Rails application.
+Processing application in /Users/dmasur/code/jobmensa2
+Processing configuration...
+[Notice] Escaping HTML by default
+Processing gems...
+Processing initializers...
+Processing libs...
+Processing routes...          
+Processing templates...       
+Processing data flow in templates...
+Processing models...          
+Processing controllers...     
+Processing data flow in controllers...
+Indexing call sites...        
+Running checks in parallel...
+ - CheckBasicAuth
+ - CheckCrossSiteScripting
+ - CheckDefaultRoutes
+ - CheckEscapeFunction
+ - CheckEvaluation
+ - CheckExecute
+ - CheckFileAccess
+ - CheckFilterSkipping
+ - CheckForgerySetting
+ - CheckLinkTo
+ - CheckLinkToHref
+ - CheckMailTo
+ - CheckMassAssignment
+ - CheckModelAttributes
+ - CheckNestedAttributes
+ - CheckQuoteTableName
+ - CheckRedirect
+ - CheckRender
+ - CheckResponseSplitting
+ - CheckSafeBufferManipulation
+ - CheckSelectVulnerability
+ - CheckSend
+ - CheckSendFile
+ - CheckSessionSettings
+ - CheckSkipBeforeFilter
+ - CheckSQL
+ - CheckStripTags
+ - CheckTranslateBug
+ - CheckValidationRegex
+ - CheckWithoutProtection
+Checks finished, collecting results...
+Generating report...
+{
+  "scan_info": {
+    "app_path": "/Users/dmasur/code/jobmensa2",
+    "rails_version": "3.2.6",
+    "security_warnings": 0,
+    "timestamp": "2012-06-19 09:19:41 +0200",
+    "checks_performed": [
+      "BasicAuth",
+      "CrossSiteScripting",
+      "DefaultRoutes",
+      "EscapeFunction",
+      "Evaluation",
+      "Execute",
+      "FileAccess",
+      "FilterSkipping",
+      "ForgerySetting",
+      "LinkTo",
+      "LinkToHref",
+      "MailTo",
+      "MassAssignment",
+      "ModelAttributes",
+      "NestedAttributes",
+      "QuoteTableName",
+      "Redirect",
+      "Render",
+      "ResponseSplitting",
+      "SQL",
+      "SafeBufferManipulation",
+      "SelectVulnerability",
+      "Send",
+      "SendFile",
+      "SessionSettings",
+      "SkipBeforeFilter",
+      "StripTags",
+      "TranslateBug",
+      "ValidationRegex",
+      "WithoutProtection"
+    ],
+    "number_of_controllers": 17,
+    "number_of_models": 32,
+    "number_of_templates": 67,
+    "ruby_version": "1.9.3",
+    "brakeman_version": "1.6.2"
+  },
+  "warnings": [
+
+  ],
+  "errors": [
+
+  ]
+}

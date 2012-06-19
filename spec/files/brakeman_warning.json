@@ -1,0 +1,63 @@
+{
+  "scan_info": {
+    "app_path": "/path/to/app",
+    "rails_version": "3.2.6",
+    "security_warnings": 0,
+    "timestamp": "2012-06-19 10:06:35 +0200",
+    "checks_performed": [
+      "BasicAuth",
+      "CrossSiteScripting",
+      "DefaultRoutes",
+      "EscapeFunction",
+      "Evaluation",
+      "Execute",
+      "FileAccess",
+      "FilterSkipping",
+      "ForgerySetting",
+      "LinkTo",
+      "LinkToHref",
+      "MailTo",
+      "MassAssignment",
+      "ModelAttributes",
+      "NestedAttributes",
+      "QuoteTableName",
+      "Redirect",
+      "Render",
+      "ResponseSplitting",
+      "SQL",
+      "SafeBufferManipulation",
+      "SelectVulnerability",
+      "Send",
+      "SendFile",
+      "SessionSettings",
+      "SkipBeforeFilter",
+      "StripTags",
+      "TranslateBug",
+      "ValidationRegex",
+      "WithoutProtection"
+    ],
+    "number_of_controllers": 16,
+    "number_of_models": 32,
+    "number_of_templates": 67,
+    "ruby_version": "1.9.3",
+    "brakeman_version": "1.6.2"
+  },
+  "warnings": [
+    {
+      "warning_type": "SQL Injection",
+      "message": "Possible SQL injection",
+      "file": "/path/to/app/controllers/admin/admins_controller.rb",
+      "line": 13,
+      "code": "Admin.order(\"name #{parms[:direction]}\")",
+      "location": {
+        "type": "method",
+        "class": "Admin::AdminsController",
+        "method": "index"
+      },
+      "user_input": "parms[:direction]",
+      "confidence": "Medium"
+    }
+  ],
+  "errors": [
+  ]
+}
