@@ -11,7 +11,7 @@ require 'rake_check/brakeman_checker'
 #
 # @param [String] string The string to print
 # @author dmasur
-def puts_unless_empty string
+def puts_unless_empty(string)
   puts string unless string.empty?
 end
 
@@ -20,7 +20,7 @@ end
 #
 # @param [Array / Hash] results Array of Results or Hashresult
 # @author dmasur
-def print_check_result results
+def print_check_result(results)
   print_outputs results
   print_summary results
 end
@@ -29,7 +29,7 @@ end
 # Print Outputs of each result
 #
 # @author dmasur
-def print_outputs results
+def print_outputs(results)
   results.each do |result|
     puts_unless_empty result[:check_output]
   end
@@ -39,11 +39,11 @@ end
 # Print Summary of all Outputs
 #
 # @author dmasur
-def print_summary results
+def print_summary(results)
   result = results.map do |result|
-    "#{result[:type]} #{result[:status]}"
+    "#{result[:type]}§#{result[:status]}"
   end
-  puts `echo "#{result.join("\n")}" | column -t`
+  puts `echo "#{result.join("\n")}" | column -t -s§`
 end
 
 desc "Check all Metric tools"

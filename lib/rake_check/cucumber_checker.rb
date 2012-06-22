@@ -15,7 +15,7 @@ class CucumberChecker
     rescue Errno::ENOENT
       "Cucumber not found"
     end
-    {:type => :cucumber, :check_output => output, :status => status}
+    { type: :cucumber, check_output: output, status: status }
   end
 
   private
@@ -27,7 +27,8 @@ class CucumberChecker
     # @author dmasur
     def status
       if @shell_output.include? 'scenarios'
-        match_data = /\d+ scenarios \((\d+) failed, \d+ passed\)/.match(@shell_output)
+        regexp = /\d+ scenarios \((\d+) failed, \d+ passed\)/
+        match_data = regexp.match(@shell_output)
         if match_data
           failed_scenarios = match_data[1]
           "#{failed_scenarios} failed scenarios".red

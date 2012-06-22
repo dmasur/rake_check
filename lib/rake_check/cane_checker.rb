@@ -15,7 +15,7 @@ class CaneChecker
     rescue Errno::ENOENT
       "Cane not found"
     end
-    { :type => :cane, :check_output => @shell_output, :status => status }
+    { type: :cane, check_output: @shell_output, status: status }
   end
 
   private

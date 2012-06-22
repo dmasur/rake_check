@@ -15,7 +15,7 @@ class YardChecker
     rescue Errno::ENOENT
       "Yardoc not found"
     end
-    {:type => :yard, :check_output => output, :status => status}
+    { type: :yard, check_output: output, status: status }
   end
 
   private

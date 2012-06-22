@@ -15,7 +15,7 @@ class RbpChecker
     rescue Errno::ENOENT
       "Rails best practices not found"
     end
-    {:type => :rbp, :check_output => output, :status => status}
+    { type: :rbp, check_output: output, status: status }
   end
 
   private

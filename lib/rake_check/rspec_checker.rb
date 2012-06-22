@@ -9,13 +9,13 @@ class RspecChecker
   #
   # @return [Hash] Checkresult
   # @author dmasur
-  def result directory="spec"
+  def result(directory="spec")
     @shell_output = begin
       `export COVERAGE=true; rspec #{directory}; export COVERAGE=`
     rescue Errno::ENOENT
       "RSpec not found"
     end
-    {:type => directory, :status => status + code_coverage, :check_output => output}
+    { type: directory, status: status + code_coverage, check_output: output }
   end
 
   private

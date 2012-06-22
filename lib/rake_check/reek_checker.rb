@@ -16,9 +16,10 @@ class ReekChecker
     rescue Errno::ENOENT
       "Reek not found"
     end
-    @shell_output = @shell_output.split("\n").
-      delete_if{|line| line.include?('already initialized constant') }.join("\n")
-    {:type => :reek, :check_output => output, :status => status}
+    @shell_output = @shell_output.split("\n").delete_if do |line|
+      line.include?('already initialized constant')
+    end.join("\n")
+    { type: :reek, check_output: output, status: status }
   end
 
   private
