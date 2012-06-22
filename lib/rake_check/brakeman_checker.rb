@@ -1,5 +1,6 @@
 require 'colored'
 require 'json'
+require 'brakeman'
 ##
 # BrakemanChecker checks the output for undocumented classes and methods
 #
@@ -11,9 +12,9 @@ class BrakemanChecker
   # @return [Hash] Checkresult
   # @author dmasur
   def result
-    @shell_output = begin
-      `brakeman -f json 2>/dev/null`
-    rescue Errno::ENOENT
+    begin
+      @tracker = Brakeman.run `pwd`.strip
+    rescue
       "Brakeman not found"
     end
     {:type => :brakeman, :check_output => output, :status => status}
@@ -38,27 +39,11 @@ class BrakemanChecker
     # @return [String] Checkstatus
     # @author dmasur
     def status
-      if @shell_output == ''
+      if @tracker.nil?
         return 'N/A'
       else
-        begin
-          warnings_string = "#{color_count data["warnings"].count} Warnings"
-          errors_string = "#{color_count data["errors"].count} Errors"
-          return "#{warnings_string}, #{errors_string}"
-        rescue JSON::ParserError
-          return 'Parse Error'
-        end
+        "#{color_count @tracker.checks.warnings.count} Warnings"./app/views/admin/pages/index.html.haml
       end
-    end
-
-    ##
-    # Parses the JSON Output
-    #
-    # @author dmasur
-    def data
-      raise JSON::ParserError if @shell_output.empty?
-      json_string = @shell_output.split("Generating report...").last
-      json = JSON.parse(json_string)
     end
 
     ##
@@ -67,14 +52,13 @@ class BrakemanChecker
     # @return [String] Output
     # @author dmasur
     def output
-      if @shell_output == ''
-        return ''
+      if @tracker.nil?
+        ''
       else
-        begin
-          (data["warnings"].map { |warning| warning["message"] } +
-          data["errors"].map { |error| error["error"] }).join(", ")
-        rescue JSON::ParserError
-          return @shell_output
+        if @tracker.checks.warnings.empty?
+          return ''
+        else
+          return @tracker.report
         end
       end
     end
