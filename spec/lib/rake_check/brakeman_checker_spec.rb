@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../lib/rake_check/brak
 describe BrakemanChecker do
   let(:tracker) { stub("Tracker", checks: stub("Checks", warnings: [])) }
   it "gives N/A on no Rails Apps" do
-    subject.result.should == { type: :brakeman, check_output: '', status: 'N/A' }
+    subject.result.should == { type: :brakeman, check_output: '', status: 'Rails App not found' }
   end
   it "gives OK with no Errors" do
     Brakeman.should_receive(:run).and_return tracker

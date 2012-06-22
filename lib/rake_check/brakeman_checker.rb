@@ -13,9 +13,9 @@ class BrakemanChecker
   # @author dmasur
   def result
     begin
-      @tracker = Brakeman.run(File.dirname(__FILE__) + '/../../../')
+      @tracker = Brakeman.run('.')
     rescue SystemExit
-      "Brakeman not found"
+      return { type: :brakeman, check_output: "", status: "Rails App not found" }
     end
     { type: :brakeman, check_output: output, status: status }
   end
