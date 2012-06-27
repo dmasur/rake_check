@@ -3,5 +3,5 @@ module RakeCheck
   # The Version Constant
   #
   # @author dmasur
-  VERSION = "0.1.10"
+  VERSION = "0.1.11"
 end

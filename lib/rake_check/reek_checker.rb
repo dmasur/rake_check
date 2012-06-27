@@ -10,9 +10,8 @@ class ReekChecker
   # @author dmasur
   def result
     require_dependencies
-    dirs = Dir["app/models", "lib"]
     @shell_output = begin
-      `reek #{dirs} -y 2>/dev/null`
+      `reek app/models lib -y 2>/dev/null`
     rescue Errno::ENOENT
       "Reek not found"
     end

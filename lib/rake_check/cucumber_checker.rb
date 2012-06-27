@@ -30,8 +30,7 @@ class CucumberChecker
         regexp = /\d+ scenarios \((\d+) failed, \d+ passed\)/
         match_data = regexp.match(@shell_output)
         if match_data
-          failed_scenarios = match_data[1]
-          "#{failed_scenarios} failed scenarios".red
+          "#{match_data[1]} failed scenarios".red
         else
           "OK".green
         end
@@ -45,12 +44,10 @@ class CucumberChecker
     #
     # @author dmasur
     def output
-      if status == "N/A"
-        ''
-      elsif status == "OK".green
-        ''
-      else
-        @shell_output
+      case status
+      when "N/A" then ''
+      when 'OK'.green then ''
+      else @shell_output
       end
     end
 end

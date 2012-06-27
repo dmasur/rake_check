@@ -26,10 +26,11 @@ class BrakemanChecker
     #
     # @return [String] colored Coverage
     # @author dmasur
-    def color_count(count)
+    def self.color_count(count)
+      count = count.to_s
       case count
-      when 0 then count.to_s.green
-      else count.to_s.red
+      when "0" then count.green
+      else count.red
       end
     end
 
@@ -42,7 +43,7 @@ class BrakemanChecker
       if @tracker.nil?
         return 'N/A'
       else
-        "#{color_count @tracker.checks.warnings.count} Warnings"
+        "#{BrakemanChecker.color_count @tracker.checks.warnings.count} Warnings"
       end
     end
 
