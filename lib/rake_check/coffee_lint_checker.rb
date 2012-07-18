@@ -11,12 +11,8 @@ class CoffeeLintChecker
   # @author dmasur
   def result
     @shell_output = begin
-      files = Dir["**/*.coffee"]
-      if files.empty?
-        ""
-      else
-        `coffeelint #{files.join(" ")}`
-      end
+      config_file = File.exists?("clint_config.json") ? '-f clint_config.json' : ''
+      `coffeelint -r . #{config_file}`
     rescue Errno::ENOENT
       "CoffeeLint not found"
     end
