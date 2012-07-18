@@ -49,14 +49,21 @@ end
 desc "Check all Metric tools"
 task :check do
   results  ||= []
+  puts "[1/7] Testing Cucumber ..."
   results << CucumberChecker.new.result
+  puts "[2/7] Testing RSpec ..."
   Dir["spec*"].each do |spec_dir|
     results << RspecChecker.new.result(spec_dir)
   end
+  puts "[3/7] Testing Rails Best Practices ..."
   results << RbpChecker.new.result
+  puts "[4/7] Testing Yard ..."
   results << YardChecker.new.result
+  puts "[5/7] Testing Reek ..."
   results << ReekChecker.new.result
+  puts "[6/7] Testing Cane ..."
   results << CaneChecker.new.result
+  puts "[7/7] Testing Brakeman ..."
   results << BrakemanChecker.new.result
   print_check_result results
 end
