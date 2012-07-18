@@ -10,4 +10,3 @@ gem 'cane', :require => false
 gem 'redcarpet', :require => false
 gem 'reek', :require => false
 gem 'cucumber', :require => false
-gem 'pry'
