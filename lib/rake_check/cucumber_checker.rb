@@ -20,34 +20,34 @@ class CucumberChecker
 
   private
 
-    ##
-    # Gives the Check Status
-    #
-    # @return [String] Checkstatus
-    # @author dmasur
-    def status
-      if @shell_output.include? 'scenarios'
-        regexp = /\d+ scenarios \((\d+) failed, \d+ passed\)/
-        match_data = regexp.match(@shell_output)
-        if match_data
-          "#{match_data[1]} failed scenarios".red
-        else
-          "OK".green
-        end
+  ##
+  # Gives the Check Status
+  #
+  # @return [String] Checkstatus
+  # @author dmasur
+  def status
+    if @shell_output.include? 'scenario'
+      regexp = /\d+ scenarios? \((\d+) failed, \d+ passed\)/
+      match_data = regexp.match(@shell_output)
+      if match_data
+        "#{match_data[1]} failed scenarios".red
       else
-        'N/A'
+        "OK".green
       end
+    else
+      'N/A'
     end
+  end
 
-    ##
-    # Cucumber Output
-    #
-    # @author dmasur
-    def output
-      case status
-      when "N/A" then ''
-      when 'OK'.green then ''
-      else @shell_output
-      end
+  ##
+  # Cucumber Output
+  #
+  # @author dmasur
+  def output
+    case status
+    when "N/A" then ''
+    when 'OK'.green then ''
+    else @shell_output
     end
+  end
 end
