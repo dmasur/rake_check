@@ -1,9 +1,9 @@
 require 'colored'
 ##
-# CoffeeLint Checker looks for smells in your Coffeescript code
+# Konacha Checker checks for konacha Errors in you Javascripttests
 #
 # @author dmasur
-class CoffeeLintChecker
+class KonachaChecker
   ##
   # Gives the Checkresult
   #
@@ -11,19 +11,14 @@ class CoffeeLintChecker
   # @author dmasur
   def result
     @shell_output = begin
-      config_file = File.exists?("clint_config.json") ? '-f clint_config.json' : ''
-      `coffeelint -r . #{config_file}`
+      `rake konacha:run`
     rescue Errno::ENOENT
-      "CoffeeLint not found"
+      "Konacha not found"
     end
-    { type: :coffeelint, check_output: output, status: status }
+    { type: :konacha, check_output: output, status: status }
   end
 
   private
-
-  def output
-    violation_count > 0 ? @shell_output : ''
-  end
 
   ##
   # Gives the Check Status
@@ -31,7 +26,6 @@ class CoffeeLintChecker
   # @return [String] Checkstatus
   # @author dmasur
   def status
-    return 'No CoffeeScript Files found' if @shell_output == ""
     @violations = violation_count
     if @violations > 0
       print_violations
@@ -42,14 +36,17 @@ class CoffeeLintChecker
     end
   end
 
+  def output
+    violation_count > 0 ? @shell_output : ''
+  end
+
   def violation_count
-    @violations ||= @shell_output.scan(/(\d*) errors? and (\d*) warnings? in .+ files?/).flatten.
-      map(&:to_i).inject(0){ |sum, value| sum += value }
+    @violations ||= @shell_output.scan(/(\d*) examples, (\d*) failures?/).flatten.last.to_i
   end
 
   def print_violations
     color_violations
-    "#{@violations} Style Violations"
+    "#{@violations} Javascript Errors"
   end
   ##
   # Color Code Validation Count

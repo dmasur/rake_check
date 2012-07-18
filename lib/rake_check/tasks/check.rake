@@ -7,6 +7,7 @@ require 'rake_check/cane_checker'
 require 'rake_check/cucumber_checker'
 require 'rake_check/brakeman_checker'
 require 'rake_check/coffee_lint_checker'
+require 'rake_check/konacha_checker'
 ##
 # Do exakt what it is called
 #
@@ -50,23 +51,25 @@ end
 desc "Check all Metric tools"
 task :check do
   results  ||= []
-  puts "[1/8] Testing Cucumber ..."
+  puts "[1/9] Testing Cucumber ..."
   results << CucumberChecker.new.result
-  puts "[2/8] Testing RSpec ..."
+  puts "[2/9] Testing RSpec ..."
   Dir["spec*"].each do |spec_dir|
     results << RspecChecker.new.result(spec_dir)
   end
-  puts "[3/8] Testing Rails Best Practices ..."
+  puts "[3/9] Testing Rails Best Practices ..."
   results << RbpChecker.new.result
-  puts "[4/8] Testing Yard ..."
+  puts "[4/9] Testing Yard ..."
   results << YardChecker.new.result
-  puts "[5/8] Testing Reek ..."
+  puts "[5/9] Testing Reek ..."
   results << ReekChecker.new.result
-  puts "[6/8] Testing Cane ..."
+  puts "[6/9] Testing Cane ..."
   results << CaneChecker.new.result
-  puts "[7/8] Testing Brakeman ..."
+  puts "[7/9] Testing Brakeman ..."
   results << BrakemanChecker.new.result
-  puts "[8/8] Testing CoffeLint ..."
+  puts "[8/9] Testing CoffeLint ..."
   results << CoffeeLintChecker.new.result
+  puts "[9/9] Testing Konacha ..."
+  results << KonachaChecker.new.result
   print_check_result results
 end
