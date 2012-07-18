@@ -34,7 +34,7 @@ class CoffeeLintChecker
     return 'No CoffeeScript Files found' if @shell_output == ""
     @violations = violation_count
     if @violations > 0
-      print_violation
+      print_violations
     elsif @violations == 0
       'OK'.green
     else
@@ -47,7 +47,7 @@ class CoffeeLintChecker
       map(&:to_i).inject(0){ |sum, value| sum += value }
   end
 
-  def print_violoations
+  def print_violations
     color_violations
     "#{@violations} Style Violations"
   end
