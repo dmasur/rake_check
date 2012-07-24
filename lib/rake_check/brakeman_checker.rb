@@ -13,7 +13,9 @@ class BrakemanChecker
   # @author dmasur
   def result
     begin
+      previous_stderr, $stderr = $stderr, StringIO.new
       @tracker = Brakeman.run('.')
+      $stderr = previous_stderr
     rescue SystemExit
       return { type: :brakeman, check_output: "", status: "Rails App not found".green }
     end
