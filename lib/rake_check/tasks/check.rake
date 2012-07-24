@@ -52,7 +52,7 @@ def execute(klass, argument=nil)
   @index += 1
   name = klass.to_s.gsub("Checker", '')
   name = [name, argument].compact.join(' ')
-  print "[#{@index}/9] Testing #{name} "
+  print "[#{@index}/10] Testing #{name} "
   checker = klass.new
   time = Benchmark.measure do
     @results << if argument
