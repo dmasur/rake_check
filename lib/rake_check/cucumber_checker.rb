@@ -10,8 +10,13 @@ class CucumberChecker
   # @return [Hash] Checkresult
   # @author dmasur
   def result
+
     @shell_output = begin
-      `export COVERAGE=true; cucumber; export COVERAGE=;`
+      if Dir["features"].empty?
+        return { type: :cucumber, check_output: '', status: "Not found".green }
+      else
+        `export COVERAGE=true; cucumber features; export COVERAGE=;`
+      end
     rescue Errno::ENOENT
       "Cucumber not found"
     end

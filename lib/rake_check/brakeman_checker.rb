@@ -15,7 +15,7 @@ class BrakemanChecker
     begin
       @tracker = Brakeman.run('.')
     rescue SystemExit
-      return { type: :brakeman, check_output: "", status: "Rails App not found" }
+      return { type: :brakeman, check_output: "", status: "Rails App not found".green }
     end
     { type: :brakeman, check_output: output, status: status }
   end

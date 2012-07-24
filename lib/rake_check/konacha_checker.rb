@@ -11,11 +11,15 @@ class KonachaChecker
   # @author dmasur
   def result
     @shell_output = begin
-      `rake konacha:run`
+      `rake konacha:run 2>&1`
     rescue Errno::ENOENT
       "Konacha not found"
     end
-    { type: :konacha, check_output: output, status: status }
+    if @shell_output.include?("Don't know how to build task 'konacha:run'")
+      { type: :konacha, check_output: '', status: 'Not found'.green }
+    else
+      { type: :konacha, check_output: output, status: status }
+    end
   end
 
   private

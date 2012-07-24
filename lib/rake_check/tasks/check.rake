@@ -8,6 +8,7 @@ require 'rake_check/cucumber_checker'
 require 'rake_check/brakeman_checker'
 require 'rake_check/coffee_lint_checker'
 require 'rake_check/konacha_checker'
+require 'benchmark'
 ##
 # Do exakt what it is called
 #
@@ -43,33 +44,40 @@ end
 # @author dmasur
 def print_summary(results)
   result = results.map do |result|
-    "#{result[:type]}§#{result[:status]}"
+    "#{result[:type].to_s.capitalize}§#{result[:status]}"
   end
   puts `echo "#{result.join("\n")}" | column -t -s§`
 end
-
+def execute(klass, argument=nil)
+  @index += 1
+  name = klass.to_s.gsub("Checker", '')
+  name = [name, argument].compact.join(' ')
+  print "[#{@index}/9] Testing #{name} "
+  checker = klass.new
+  time = Benchmark.measure do
+    @results << if argument
+    checker.result(argument)
+    else
+      checker.result
+    end
+  end
+  print "(#{time.total.round(2)} sec): "
+  puts @results.last[:status]
+end
 desc "Check all Metric tools"
 task :check do
-  results  ||= []
-  puts "[1/9] Testing Cucumber ..."
-  results << CucumberChecker.new.result
-  puts "[2/9] Testing RSpec ..."
+  @results = []
+  @index = 0
+  execute CucumberChecker
   Dir["spec*"].each do |spec_dir|
-    results << RspecChecker.new.result(spec_dir)
+    execute RspecChecker, spec_dir
   end
-  puts "[3/9] Testing Rails Best Practices ..."
-  results << RbpChecker.new.result
-  puts "[4/9] Testing Yard ..."
-  results << YardChecker.new.result
-  puts "[5/9] Testing Reek ..."
-  results << ReekChecker.new.result
-  puts "[6/9] Testing Cane ..."
-  results << CaneChecker.new.result
-  puts "[7/9] Testing Brakeman ..."
-  results << BrakemanChecker.new.result
-  puts "[8/9] Testing CoffeLint ..."
-  results << CoffeeLintChecker.new.result
-  puts "[9/9] Testing Konacha ..."
-  results << KonachaChecker.new.result
-  print_check_result results
+  execute RbpChecker
+  execute YardChecker
+  execute ReekChecker
+  execute CaneChecker
+  execute BrakemanChecker
+  execute CoffeeLintChecker
+  execute KonachaChecker
+  print_check_result @results
 end

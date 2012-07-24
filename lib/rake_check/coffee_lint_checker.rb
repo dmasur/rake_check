@@ -31,7 +31,7 @@ class CoffeeLintChecker
   # @return [String] Checkstatus
   # @author dmasur
   def status
-    return 'No CoffeeScript Files found' if @shell_output == ""
+    return 'Not found'.green if @shell_output.include? "0 files"
     @violations = violation_count
     if @violations > 0
       print_violations
