@@ -9,6 +9,7 @@ require 'rake_check/brakeman_checker'
 require 'rake_check/coffee_lint_checker'
 require 'rake_check/konacha_checker'
 require 'benchmark'
+
 ##
 # Do exakt what it is called
 #
@@ -48,7 +49,7 @@ def print_summary(results)
   end
   puts `echo "#{result.join("\n")}" | column -t -s§`
 end
-def execute(klass, argument=nil)
+def execute_checker(klass, argument=nil)
   @index += 1
   name = klass.to_s.gsub("Checker", '')
   name = [name, argument].compact.join(' ')
@@ -68,16 +69,16 @@ desc "Check all Metric tools"
 task :check do
   @results = []
   @index = 0
-  execute CucumberChecker
+  execute_checker CucumberChecker
   Dir["spec*"].each do |spec_dir|
-    execute RspecChecker, spec_dir
+    execute_checker RspecChecker, spec_dir
   end
-  execute RbpChecker
-  execute YardChecker
-  execute ReekChecker
-  execute CaneChecker
-  execute BrakemanChecker
-  execute CoffeeLintChecker
-  execute KonachaChecker
+  execute_checker RbpChecker
+  execute_checker YardChecker
+  execute_checker ReekChecker
+  execute_checker CaneChecker
+  execute_checker BrakemanChecker
+  execute_checker CoffeeLintChecker
+  execute_checker KonachaChecker
   print_check_result @results
 end
