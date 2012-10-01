@@ -19,3 +19,4 @@ _yardoc
 
 rake_check.sublime-project
 rake_check.sublime-workspace
+.rvmrc
