@@ -53,7 +53,7 @@ def execute_checker(klass, argument=nil)
   @index += 1
   name = klass.to_s.gsub("Checker", '')
   name = [name, argument].compact.join(' ')
-  print "[#{@index}/10] Testing #{name} "
+  print "[#{@index}/9] Testing #{name} "
   checker = klass.new
   time = Benchmark.measure do
     @results << if argument
@@ -77,7 +77,7 @@ task :check do
   execute_checker YardChecker
   execute_checker ReekChecker
   execute_checker CaneChecker
-  execute_checker BrakemanChecker
+  #execute_checker BrakemanChecker
   execute_checker CoffeeLintChecker
   execute_checker KonachaChecker
   print_check_result @results
