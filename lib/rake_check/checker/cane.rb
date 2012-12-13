@@ -31,7 +31,7 @@ module RakeCheck
       end
 
       def violations_count
-        check_output[/Total Violations: (\d+)/, 1] || 0
+        (check_output[/Total Violations: (\d+)/, 1] || 0).to_i
       end
     end
   end
