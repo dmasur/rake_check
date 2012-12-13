@@ -10,7 +10,7 @@ task :check do
   end
   executor.add_checker(RakeCheck::Checker::Rbp.new)
   executor.add_checker(RakeCheck::Checker::Yard.new)
-  executor.add_checker(RakeCheck::Checker::Reek.new)
+  # executor.add_checker(RakeCheck::Checker::Reek.new)
   executor.add_checker(RakeCheck::Checker::Cane.new)
   executor.add_checker(RakeCheck::Checker::Brakeman.new)
   executor.add_checker(RakeCheck::Checker::CoffeeLint.new)
