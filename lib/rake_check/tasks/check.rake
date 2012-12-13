@@ -5,8 +5,9 @@ desc "Check all Metric tools"
 task :check do
   executor = RakeCheck::Executor.new
   executor.add_checker(RakeCheck::Checker::Cucumber.new)
-  executor.add_checker(RakeCheck::Checker::Rspec.new(directory: "spec"))
-  executor.add_checker(RakeCheck::Checker::Rspec.new(directory: "spec_no_rails"))
+  Dir['spec*'].each do |directory|
+    executor.add_checker(RakeCheck::Checker::Rspec.new(directory: directory))
+  end
   executor.add_checker(RakeCheck::Checker::Rbp.new)
   executor.add_checker(RakeCheck::Checker::Yard.new)
   executor.add_checker(RakeCheck::Checker::Reek.new)

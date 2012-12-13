@@ -1,25 +1,21 @@
 require 'open3'
-require 'colored'
 
 module RakeCheck
   module Checker
     class Base
-      attr_reader :check_output, :time, :options
+      include Term::ANSIColor
+
+      attr_reader :check_output, :time, :options, :short_message
       def initialize(options = {})
         @options = options
       end
 
       def status
-        "(#{@time} sec): " + (success? ? "OK".green : "FAILED".red) + " " + short_message
+        "(#{@time} sec): " + (success? ? green("OK") : red("FAILED")) + " " + short_message.to_s
       end
 
       def success?
         @status && @status.success?
-      end
-
-      # nothing by default
-      def short_message
-        ""
       end
 
       # overwrite if needed
@@ -30,7 +26,13 @@ module RakeCheck
       private
       def run_command(*commands)
         @time = Benchmark.measure do
-          @check_output, @status = Open3.capture2e *commands
+          begin
+            @check_output, @status = Open3.capture2e *commands
+          rescue Errno::ENOENT => e
+            @status = OpenStruct.new("success?" => false)
+            @short_message = e.message
+            @check_output = e.backtrace.unshift(cyan(bold('Backtrace:'))).unshift(red(bold("Error: ") + e.message)).join("\n")
+          end
         end.total.round(2)
       end
     end

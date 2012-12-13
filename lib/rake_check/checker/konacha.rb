@@ -12,11 +12,11 @@ module RakeCheck
       end
 
       def short_message
-        summary = check_output[/\d+ examples, \d+ failed, \d+ pending/, 0]
-        if summary
-          "with " + summary
-        else
-          ""
+        @short_message ||= begin
+          summary = check_output[/\d+ examples, \d+ failed, \d+ pending/, 0]
+          if summary
+            "with " + summary
+          end
         end
       end
 

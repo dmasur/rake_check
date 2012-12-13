@@ -4,6 +4,7 @@ require 'rake_check/result'
 
 module RakeCheck
   class Executor
+    include Term::ANSIColor
     def initialize(silent = !Rake.verbose)
       @silent = silent
       @checks = []
@@ -36,8 +37,7 @@ module RakeCheck
       if check_result.failed?
         check_result.each do |checker|
           next if checker.success?
-          puts "==================================OUTPUT FOR: #{checker.type}==================================".yellow
-          # puts [checker.type, checker.status].join(" ")
+          puts white(on_blue(bold(["=" * 50, "OUTPUT FOR: ", checker.type, "=" * 50].join(""))))
           puts checker.check_output
         end
         exit 1

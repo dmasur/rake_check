@@ -1,6 +1,3 @@
-require 'colored'
-require 'json'
-require 'brakeman'
 ##
 # BrakemanChecker checks the output for undocumented classes and methods
 #

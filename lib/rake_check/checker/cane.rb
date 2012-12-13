@@ -1,4 +1,3 @@
-require 'colored'
 ##
 # CaneChecker checks the output code smells with cane
 #
@@ -12,18 +11,18 @@ module RakeCheck
       end
 
       def short_message
-        if violations_count > 0
-          violations = case violations_count
-          when 0
-            violations_count.to_s.green
-          when 1..9
-            violations_count.to_s.yellow
-          else
-            violations_count.to_s.red
+        @short_message ||= begin
+          if violations_count > 0
+            violations = case violations_count
+            when 0
+              green violations_count
+            when 1..9
+              yellow violations_count
+            else
+              red violations_count
+            end
+            "with #{violations} Violations"
           end
-          "with #{violations} Violations"
-        else
-          ""
         end
       end
 

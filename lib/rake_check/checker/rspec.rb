@@ -1,8 +1,5 @@
-require 'colored'
 ##
 # Check the Output of rspec and simplecov
-#
-# @author dmasur
 module RakeCheck
   module Checker
     class Rspec < Base
@@ -20,11 +17,11 @@ module RakeCheck
             coverage = /LOC \(([\d.]+)%\) covered/.match(check_output)[1].to_f
             coverage = case coverage
             when 0..60
-              "#{coverage}%".red
+              red "#{coverage}%"
             when 60..90
-              "#{coverage}%".yellow
+              yellow "#{coverage}%"
             when 90..100
-              "#{coverage}%".green
+              green "#{coverage}%"
             end
             "with #{coverage} Code Coverage"
         else
