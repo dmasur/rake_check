@@ -19,3 +19,7 @@ require 'term/ansicolor'
 module RakeCheck
   # Your code goes here...
 end
+
+class String
+  include Term::ANSIColor
+end

@@ -15,11 +15,11 @@ module RakeCheck
           if violations_count > 0
             violations = case violations_count
             when 0
-              green violations_count
+              violations_count.to_s.green
             when 1..9
-              yellow violations_count
+              violations_count.to_s.yellow
             else
-              red violations_count
+              violations_count.to_s.yellow
             end
             "with #{violations} Violations"
           end

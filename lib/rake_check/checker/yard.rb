@@ -14,11 +14,11 @@ module RakeCheck
       def short_message
         colored = case percentage
         when 0..80
-          red "#{percentage}%"
+          "#{percentage}%".red
         when 80..90
-          yellow "#{percentage}%"
+          "#{percentage}%".yellow
         when 90..100
-          green "#{percentage}%"
+          "#{percentage}%".green
         end
         colored + " documented"
       end

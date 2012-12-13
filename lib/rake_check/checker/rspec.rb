@@ -17,11 +17,11 @@ module RakeCheck
             coverage = /LOC \(([\d.]+)%\) covered/.match(check_output)[1].to_f
             coverage = case coverage
             when 0..60
-              red "#{coverage}%"
+              "#{coverage}%".red
             when 60..90
-              yellow "#{coverage}%"
+              "#{coverage}%".yellow
             when 90..100
-              green "#{coverage}%"
+              "#{coverage}%".green
             end
             "with #{coverage} Code Coverage"
         else

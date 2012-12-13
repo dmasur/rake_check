@@ -11,7 +11,7 @@ module RakeCheck
       end
 
       def status
-        "(#{@time} sec): " + (success? ? green("OK") : red("FAILED")) + " " + short_message.to_s
+        "(#{@time} sec): " + (success? ? "OK".green : "FAILED".red) + " " + short_message.to_s
       end
 
       def success?
@@ -31,7 +31,7 @@ module RakeCheck
           rescue Errno::ENOENT => e
             @status = OpenStruct.new("success?" => false)
             @short_message = e.message
-            @check_output = e.backtrace.unshift(cyan(bold('Backtrace:'))).unshift(red(bold("Error: ") + e.message)).join("\n")
+            @check_output = e.backtrace.unshift('Backtrace:'.bold.cyan).unshift("Error: ".bold.red + e.message).join("\n")
           end
         end.total.round(2)
       end
