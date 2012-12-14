@@ -12,7 +12,7 @@ module RakeCheck
       end
 
       def short_message
-        @short_message ||= "with " + check_output[/\d+ errors and \d+ warnings in \d+ file(s?)/, 0].to_s
+        @short_message ||= "with " + check_output[/\d+ errors and \d+ warnings in \d+ files?/, 0].to_s
       end
 
       def config_file
