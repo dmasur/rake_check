@@ -14,9 +14,9 @@ Gem::Specification.new do |gem|
   gem.name          = "rake_check"
   gem.require_paths = ["lib"]
   gem.version       = RakeCheck::VERSION
-  
+
   gem.add_dependency "rspec"
-  gem.add_dependency "colored"
+  gem.add_dependency "term-ansicolor"
   gem.add_dependency "rake"
   gem.add_dependency "reek"
   gem.add_dependency "cane"
