@@ -16,3 +16,4 @@ tmp
 # YARD artifacts
 .yardoc
 _yardoc
+.rvmrc

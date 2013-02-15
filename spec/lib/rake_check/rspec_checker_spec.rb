@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../../lib/rake_check/rspec_checker')
+require_relative '../../../lib/rake_check/rspec_checker'
 
 describe RspecChecker do
   it "gives N/A on Error" do
