@@ -3,3 +3,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
 end
+
+class String
+  include Term::ANSIColor
+end

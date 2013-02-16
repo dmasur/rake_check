@@ -17,3 +17,5 @@ tmp
 .yardoc
 _yardoc
 .rvmrc
+rake_check.sublime-project
+rake_check.sublime-workspace
